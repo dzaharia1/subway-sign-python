@@ -35,7 +35,7 @@ def get_data():
 def create_group(index, routeId, minutesUntil, headsign):
     yIndex = 8
     if (index > 1):
-        yIndex = yIndex + 15
+        yIndex = yIndex + 16
 
     if routeId == 'GS':
         routeId = 'S'
@@ -51,7 +51,7 @@ def create_group(index, routeId, minutesUntil, headsign):
     routeIdlabel = Label(font,
         color=colors.black,
         text=route)
-    routeIdlabel.x = 10
+    routeIdlabel.x = 11
     routeIdlabel.y = yIndex
     
     if minutesUntil > settings["warnTime"]:
@@ -72,7 +72,7 @@ def create_group(index, routeId, minutesUntil, headsign):
     headsignLabel = Label(font,
         color=colors.white,
         text=headsign[0:13])
-    headsignLabel.x = 21
+    headsignLabel.x = 22
     headsignLabel.y = yIndex
     
     if len(routeId) > 1 and routeId[1] == "X":
@@ -81,7 +81,7 @@ def create_group(index, routeId, minutesUntil, headsign):
         arrivalRow.append(leftTriangleScrim)
         arrivalRow.append(rightTriangleScrim)
     else:
-        circleScrim = Circle(12, yIndex, 6, fill=colors.getColorByLine(route))
+        circleScrim = Circle(13, yIndex, 7, fill=colors.getColorByLine(route))
         arrivalRow.append(circleScrim)
     
     arrivalRow.append(arrivalIndexlabel)
