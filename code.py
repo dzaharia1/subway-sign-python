@@ -24,9 +24,10 @@ def get_data():
     ret = []
     try:
         ret = network.fetch_data(DATA_SOURCE, json_path=DATA_LOCATION)
-    except (RuntimeError, TimeoutError) as e:
-        print("Fetch error: ", e)
-        time.sleep(.2)
+    except:
+        display.show(None)
+        print("Fetch error")
+        time.sleep(.5)
         ret = get_data()
 
     return ret
@@ -119,12 +120,17 @@ settings = data[0]
 
 while True:
     if settings["rotating"] and settings["signOn"]:
-        for i in range(2, settings["numArrivals"] + 1):
-            if settings["signOn"]:
+        i = 2
+        while i <= settings["numArrivals"]:
+            if settings["signOn"] and settings["rotating"]:
                 draw_arrivals(1, i)
+                startTime = time.monotonic()
                 data = get_data()
                 settings = data[0]
-                time.sleep(settings["rotationTime"])
+                elapsed = time.monotonic() - startTime
+                print("Request took", elapsed, "seconds")
+                time.sleep(abs(settings["rotationTime"] - elapsed))
+                i = i + 1
     elif settings["signOn"]:
         draw_arrivals(1, 2)
         time.sleep(5)
