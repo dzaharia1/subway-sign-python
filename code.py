@@ -29,6 +29,9 @@ display.show(boot_message)
 
 def get_data():
     ret = []
+    currTime = time.struct_time(time.localtime())
+    print(currTime.tm_hour, ":", currTime.tm_min, ":", currTime.tm_sec)
+
     try:
         ret = network.fetch_data(DATA_SOURCE, json_path=DATA_LOCATION)
     except:
@@ -40,9 +43,9 @@ def get_data():
     return ret
 
 def create_arrival(index, routeId, minutesUntil, headsign):
-    yIndex = 8
+    yIndex = 7
     if (index > 1):
-        yIndex = yIndex + 16
+        yIndex = yIndex + 17
 
     if routeId == 'GS':
         routeId = 'S'
@@ -78,8 +81,8 @@ def create_arrival(index, routeId, minutesUntil, headsign):
 
     headsignLabel = Label(font,
         color=colors.white,
-        text=headsign[0:13],
-        x=22,
+        text=headsign[0:12],
+        x=23,
         y=yIndex)
     
     if len(routeId) > 1 and routeId[1] == "X":
@@ -126,6 +129,8 @@ data = get_data()
 settings = data[0]
 
 while True:
+    network.get_local_time()
+
     if settings["rotating"] and settings["signOn"]:
         i = 2
         while i <= settings["numArrivals"]:
