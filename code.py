@@ -14,11 +14,18 @@ from adafruit_matrixportal.network import Network
 
 DATA_SOURCE = "https://subway-arrivals.herokuapp.com/sign/" + secrets["sign_id"]
 DATA_LOCATION = []
+font = terminalio.FONT
 
 matrix = Matrix(width = 128, height = 32)
 display = matrix.display
+boot_message = displayio.Group()
+boot_text = Label(font, color=colors.white, text="Starting up", x=4, y=14)
+boot_message.append(boot_text)
+display.show(boot_message)
 network = Network(status_neopixel=board.NEOPIXEL, debug=False)
-font = terminalio.FONT
+boot_text.text = "Connecting to\nssid " + secrets["ssid"] + "..."
+boot_text.y = 6
+display.show(boot_message)
 
 def get_data():
     ret = []
@@ -32,7 +39,7 @@ def get_data():
 
     return ret
 
-def create_group(index, routeId, minutesUntil, headsign):
+def create_arrival(index, routeId, minutesUntil, headsign):
     yIndex = 8
     if (index > 1):
         yIndex = yIndex + 16
@@ -45,39 +52,39 @@ def create_group(index, routeId, minutesUntil, headsign):
     arrivalRow = displayio.Group()
     arrivalIndexlabel = Label(font,
         color=colors.white,
-        text=str(index))
-    arrivalIndexlabel.x = 0
-    arrivalIndexlabel.y = yIndex
+        text=str(index),
+        x=0,
+        y=yIndex)
     routeIdlabel = Label(font,
         color=colors.black,
-        text=route)
-    routeIdlabel.x = 11
-    routeIdlabel.y = yIndex
+        text=route,
+        x=11,
+        y=yIndex)
     
     if minutesUntil > settings["warnTime"]:
         minutesUntilLabel = Label(font,
             color=colors.white,
-            text=str(minutesUntil) + "min")
+            text=str(minutesUntil) + "min",
+            y=yIndex)
     else:
         minutesUntilLabel = Label(font,
             color=colors.getColorByLine('B'),
-            text=str(minutesUntil) + "min")
+            text=str(minutesUntil) + "min",
+            y=yIndex)
     if minutesUntil < 10:
         minutesUntilLabel.x = 128-23
     else:
         minutesUntilLabel.x = 128-29
-    
-    minutesUntilLabel.y = yIndex
 
     headsignLabel = Label(font,
         color=colors.white,
-        text=headsign[0:13])
-    headsignLabel.x = 22
-    headsignLabel.y = yIndex
+        text=headsign[0:13],
+        x=22,
+        y=yIndex)
     
     if len(routeId) > 1 and routeId[1] == "X":
-        leftTriangleScrim = Triangle(6, yIndex, 12, yIndex - 6, 12, yIndex + 6, fill=colors.getColorByLine(route))
-        rightTriangleScrim = Triangle(12, yIndex - 6, 12, yIndex + 6, 18, yIndex, fill=colors.getColorByLine(route))
+        leftTriangleScrim = Triangle(6, yIndex, 13, yIndex - 7, 13, yIndex + 7, fill=colors.getColorByLine(route))
+        rightTriangleScrim = Triangle(13, yIndex - 7, 13, yIndex + 7, 20, yIndex, fill=colors.getColorByLine(route))
         arrivalRow.append(leftTriangleScrim)
         arrivalRow.append(rightTriangleScrim)
     else:
@@ -95,14 +102,14 @@ def draw_arrivals(firstIndex, secondIndex):
     firstArrivalData = data[firstIndex]
     secondArrivalData = data[secondIndex]
 
-    arrival1 = create_group(
+    arrival1 = create_arrival(
         firstIndex,
         firstArrivalData["routeId"],
         firstArrivalData["minutesUntil"],
         firstArrivalData["headsign"]
     )
 
-    arrival2 = create_group(
+    arrival2 = create_arrival(
         secondIndex,
         secondArrivalData["routeId"],
         secondArrivalData["minutesUntil"],
