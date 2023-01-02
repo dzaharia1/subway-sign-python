@@ -16,7 +16,7 @@ DATA_SOURCE = "https://subway-arrivals.herokuapp.com/sign/" + secrets["sign_id"]
 DATA_LOCATION = []
 font = terminalio.FONT
 
-matrix = Matrix(width = 128, height = 32)
+matrix = Matrix(width = 128, height = 32, bit_depth=4)
 display = matrix.display
 boot_message = displayio.Group()
 boot_text = Label(font, color=colors.white, text="Starting up", x=4, y=14)
@@ -36,7 +36,7 @@ def get_data():
         ret = network.fetch_data(DATA_SOURCE, json_path=DATA_LOCATION)
     except:
         display.show(None)
-        print("Fetch error")
+        print("~~~~~~~~~~~~~~~~ Fetch error ~~~~~~~~~~~~~~~~")
         time.sleep(.5)
         ret = get_data()
 
@@ -127,10 +127,9 @@ def draw_arrivals(firstIndex, secondIndex):
 
 data = get_data()
 settings = data[0]
+network.get_local_time()
 
 while True:
-    network.get_local_time()
-
     if settings["rotating"] and settings["signOn"]:
         i = 2
         while i <= settings["numArrivals"]:
