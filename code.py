@@ -35,7 +35,6 @@ def get_data():
     try:
         ret = network.fetch_data(DATA_SOURCE, json_path=DATA_LOCATION)
     except:
-        display.show(None)
         print("~~~~~~~~~~~~~~~~ Fetch error ~~~~~~~~~~~~~~~~")
         time.sleep(.5)
         ret = get_data()
