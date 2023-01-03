@@ -138,7 +138,6 @@ while True:
                 data = get_data()
                 settings = data[0]
                 elapsed = time.monotonic() - startTime
-                print("Request took", elapsed, "seconds")
                 time.sleep(abs(settings["rotationTime"] - elapsed))
                 i = i + 1
     elif settings["signOn"]:

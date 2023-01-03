@@ -16,21 +16,6 @@ colors = {
 white = colors["white"]
 black = colors["black"]
 
-color_indices = [
-    "red123",
-    "green456",
-    "magenta7",
-    "blueACE",
-    "orangeBDFM",
-    "greenG",
-    "brownJZ",
-    "grayL",
-    "yellowNQRW",
-    "grayS",
-    "black",
-    "white"
-]
-
 line_colors = {
     "1": "red123",
     "2": "red123",
