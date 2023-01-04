@@ -3,3 +3,4 @@ lib/*
 .vscode/
 boot_out.txt
 secrets.py
+settings.toml
