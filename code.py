@@ -24,7 +24,7 @@ boot_message.append(boot_text)
 display.show(boot_message)
 network = Network(status_neopixel=board.NEOPIXEL, debug=False)
 boot_text.text = "Connecting to\nssid " + secrets["ssid"] + "..."
-boot_text.y = 6
+boot_text.y = 8
 display.show(boot_message)
 
 def get_data():
@@ -75,14 +75,19 @@ def create_arrival(index, routeId, minutesUntil, headsign):
             y=yIndex)
     if minutesUntil < 10:
         minutesUntilLabel.x = 128-23
+        headsignLabel = Label(font,
+            color=colors.white,
+            text=headsign[0:13],
+            x=23,
+            y=yIndex)
     else:
         minutesUntilLabel.x = 128-29
+        headsignLabel = Label(font,
+            color=colors.white,
+            text=headsign[0:12],
+            x=23,
+            y=yIndex)
 
-    headsignLabel = Label(font,
-        color=colors.white,
-        text=headsign[0:12],
-        x=23,
-        y=yIndex)
     
     if len(routeId) > 1 and routeId[1] == "X":
         leftTriangleScrim = Triangle(6, yIndex, 13, yIndex - 7, 13, yIndex + 7, fill=colors.getColorByLine(route))
@@ -123,8 +128,9 @@ def draw_arrivals(firstIndex, secondIndex):
     megaGroup.append(arrival2)
     display.show(megaGroup)
     
-
 data = get_data()
+boot_text.text = "Fetching initial\ndata..."
+display.show(boot_message)
 settings = data[0]
 network.get_local_time()
 
@@ -140,6 +146,8 @@ while True:
                 elapsed = time.monotonic() - startTime
                 time.sleep(abs(settings["rotationTime"] - elapsed))
                 i = i + 1
+            else:
+                break
     elif settings["signOn"]:
         draw_arrivals(1, 2)
         time.sleep(5)
