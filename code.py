@@ -11,6 +11,7 @@ from adafruit_display_shapes.rect import Rect
 from adafruit_bitmap_font import bitmap_font
 from adafruit_matrixportal.matrix import Matrix
 from adafruit_matrixportal.network import Network
+import supervisor
 
 DATA_SOURCE = "https://subway-arrivals.herokuapp.com/sign/" + secrets["sign_id"]
 DATA_LOCATION = []
@@ -27,7 +28,7 @@ boot_text.text = "Connecting to\nssid " + secrets["ssid"] + "..."
 boot_text.y = 8
 display.show(boot_message)
 
-def get_data():
+def get_data(iteration=0):
     ret = []
     currTime = time.struct_time(time.localtime())
     print(currTime.tm_hour, ":", currTime.tm_min, ":", currTime.tm_sec)
@@ -35,10 +36,12 @@ def get_data():
     try:
         ret = network.fetch_data(DATA_SOURCE, json_path=DATA_LOCATION)
     except:
-        print("~~~~~~~~~~~~~~~~ Fetch error ~~~~~~~~~~~~~~~~")
-        time.sleep(.5)
-        ret = get_data()
-
+        if iteration < 10:
+            print("~~~~~~~~~~~~~~~~ Fetch error", iteration, "~~~~~~~~~~~~~~~~")
+            time.sleep(2)
+            ret = get_data(iteration=(iteration + 1))
+        else:
+            supervisor.reload()
     return ret
 
 def create_arrival(index, routeId, minutesUntil, headsign):
@@ -151,12 +154,10 @@ while True:
     elif settings["signOn"]:
         draw_arrivals(1, 2)
         time.sleep(5)
-        data = get_data()
-        settings = data[0]
     else:
-        rect = Rect(0, 0, 128, 32, fill=colors.black)
         mask = displayio.Group()
         display.show(mask)
         time.sleep(3)
-        data = get_data()
-        settings = data[0]
+        
+    data = get_data()
+    settings = data[0]
