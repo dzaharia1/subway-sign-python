@@ -109,8 +109,15 @@ def create_arrival(index, routeId, minutesUntil, headsign):
     return arrivalRow
 
 def draw_arrivals(firstIndex, secondIndex):
-    firstArrivalData = data[firstIndex]
-    secondArrivalData = data[secondIndex]
+    try:
+        firstArrivalData = data[firstIndex]
+        secondArrivalData = data[secondIndex]
+    except:
+        boot_text.text = "No upcoming trains"
+        boot_text.color = colors.getColorByLine('B')
+        boot_message.y = 8
+        display.show(boot_message)
+        return
 
     arrival1 = create_arrival(
         firstIndex,
