@@ -23,7 +23,7 @@ boot_message = displayio.Group()
 boot_text = Label(font, color=colors.white, text="Starting up", x=4, y=14)
 boot_message.append(boot_text)
 display.show(boot_message)
-network = Network(status_neopixel=board.NEOPIXEL, debug=False)
+network = Network(debug=False)
 boot_text.text = "Connecting to\nssid " + secrets["ssid"] + "..."
 boot_text.y = 8
 display.show(boot_message)
