@@ -115,6 +115,7 @@ def draw_arrivals(firstIndex, secondIndex):
     except:
         boot_text.text = "No upcoming trains"
         boot_text.color = colors.getColorByLine('B')
+        boot_message.y = 8
         display.show(boot_message)
         return
 
