@@ -138,7 +138,7 @@ settings = data[0]
 network.get_local_time()
 
 while True:
-    if settings["rotating"] and settings["signOn"]:
+    if settings["rotating"] and settings["signOn"] and len(data) > (settings["numArrivals"] + 1):
         i = 2
         while i <= settings["numArrivals"]:
             if settings["signOn"] and settings["rotating"]:
@@ -151,9 +151,14 @@ while True:
                 i = i + 1
             else:
                 break
-    elif settings["signOn"]:
+    elif settings["signOn"] and len(data) >= 3:
         draw_arrivals(1, 2)
         time.sleep(5)
+    elif len(data) == 1:
+        boot_text.text = "No upcoming\narrivals"
+        boot_text.color = colors.getColorByLine('B')
+        display.show(boot_message)
+        time.sleep(10)
     else:
         mask = displayio.Group()
         display.show(mask)
