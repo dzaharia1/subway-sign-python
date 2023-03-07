@@ -113,7 +113,7 @@ def draw_arrivals(firstIndex, secondIndex):
         firstArrivalData = data[firstIndex]
         secondArrivalData = data[secondIndex]
     except:
-        boot_text.text = "No upcoming\narrivals"
+        boot_text.text = "No upcoming trains"
         boot_text.color = colors.getColorByLine('B')
         display.show(boot_message)
         return
