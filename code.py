@@ -142,7 +142,7 @@ data = get_data()
 boot_text.text = "Fetching initial\ndata..."
 display.show(boot_message)
 settings = data[0]
-network.get_local_time()
+network.get_local_time(location="America/New_York")
 
 while True:
     if settings["rotating"] and settings["signOn"]:
