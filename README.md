@@ -19,3 +19,5 @@ The sign requires a few materials:
 - One [Chemcast Black LED Acrylic from TAP Plastics](https://www.tapplastics.com/product/plastics/cut_to_size_plastic/black_led_sheet/668). More information later in the tutorial on how to size this sheet down. Adafruit sells a very similar product, but it isn't large enough for this project.
 - A pack of [PRO UGlu Dashes](https://www.amazon.com/dp/B06XCCRPRY?ref=nb_sb_ss_w_as-reorder-t1_k1_1_8&amp=&crid=GOHAITNCFYSI&amp=&sprefix=pro+uglu)
 
+## Building the sign
+TODO
