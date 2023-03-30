@@ -13,7 +13,7 @@ from adafruit_matrixportal.matrix import Matrix
 from adafruit_matrixportal.network import Network
 import supervisor
 
-DATA_SOURCE = "https://subway-arrivals.herokuapp.com/sign/" + secrets["sign_id"]
+DATA_SOURCE = secrets["api"] + "/sign" + secrets["sign_id"]
 DATA_LOCATION = []
 font = terminalio.FONT
 
