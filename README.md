@@ -9,7 +9,7 @@ The subway arrivals sign needs three overall components in place to get up and r
 
 This tutorial will cover the construction and setup of the sign itself.
 
-__⚠️ Important: ____*YOU MUST FIRST [SET UP AND DEPLOY THE API](https://github.com/dzaharia1/subway-schedules) AND [SET UP AND DEPLOY THE APP](https://github.com/dzaharia1/subway-sign-app) FOR THIS TUTORIAL TO WORK*__
+__⚠️ Important: __ __*YOU MUST FIRST [SET UP AND DEPLOY THE API](https://github.com/dzaharia1/subway-schedules) AND [SET UP AND DEPLOY THE APP](https://github.com/dzaharia1/subway-sign-app) FOR THIS TUTORIAL TO WORK*__
 
 ## Materials you will need
 The sign requires a few materials:
