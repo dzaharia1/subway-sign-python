@@ -21,7 +21,7 @@ The sign requires a few materials:
 - A power supply that provides at least 5 volts. A standard USB-C brick will do the trick.
 
 ## Order your acrylic diffuser
-The diffuser's job is to increase the clarity and legibility of your display, while also reducing it's cast, so that the sign doesn't become a blaring-bright nuisance in your home. I sourced mine from TAP Plastics, who custom cuts their acrylic sheets to order. We'll need a custom size for the size of LED matrix you chose to buy.
+This plastic sheet has a few jobs. It's the main skeleton for the sign, holding the two LED matrices together. It also significantly increases the legibility of the sign, making it more practical. Finally, it reduces the cast brightness, while preserving surface brightness, preventing a blaring-bright nuisance in your home. I sourced mine from TAP Plastics, who custom cuts their acrylic sheets to order. We'll need a custom size for the size of LED matrix you chose to buy.
 
 ### Determine the size of your LED matrices
 First, determine the overall size of your combined LED panel, which is the two LED matrices side-by side. On the product page of the LED matrix you purchased, scroll down to the "technical details" section for the overall dimensions of the matrix.
