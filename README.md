@@ -50,7 +50,7 @@ Let's do some measurements before placing the LED panels to make sure they're de
 
 Grab a straight-edge ruler, and some tool you can use to lightly mark the glossy side of the plastic with the "outline" of the led panels. I used my smallest precision flathead screwdriver for this purpose. Dry erase is another option, but I found it rubbing off too easily. Don't worry– as long as you mark gently the etching from the flathead screwdriver will not show through the diffuser once your project is assembled!
 
-Lay the acrylic sheet on a soft, completely clean surface __satin side down__. The glossy side will face the LED panel, while the satin side will face outward. Let's avoid scratching the satin side in any way. From each corner of the acrylic sheet, use your straight edge and screwdriver to mark .5" away from the sheet's edges. __Your markings should be made only on the glossy side of the sheet__.
+Lay the acrylic sheet __satin side down__ on a soft, completely clean surface like a cutting board, or even some cardboard. The glossy side will face the LED panel, while the satin side will face outward. Let's avoid scratching the satin side in any way. From each corner of the acrylic sheet, use your straight edge and screwdriver to mark .5" away from the sheet's edges. __Your markings should be made only on the glossy side of the sheet__.
 
 Connect the markings with lines to form a centered rectangle .5" smaller than the sheet in both dimensions. If you sized and ordered your sheet correctly, this rectangle should be the identical dimensions to your LED panels side-by-side. If your drawn rectangle is significantly different in size from your LED matrices side-by-side, check all of your measurements again.
 
