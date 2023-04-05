@@ -128,9 +128,9 @@ Head on over to the releases page of the CircuitPython Libraries Bundle and down
 Finally it's time to fetch the subway sign code and push it to the board. Clone the code from this repository by running the following in the terminal of your choice:
 
 ```bash
-git clone https://github.com/dzaharia1/subway-sign-python.git
-cd subway-sign-python
-cp *.py /Volumes/CIRCUITPY
+$ git clone https://github.com/dzaharia1/subway-sign-python.git
+$ cd subway-sign-python
+$ cp *.py /Volumes/CIRCUITPY
 ```
 
 Instantly upon running that last line of code, your MatrixPortal should reboot, and the subway sign software should start running! Head to the subway sign app you deployed, enter the sign code at the prompt, hit "Find my sign" and play around with your settings to get your sign running exactly as you need it. Any settings change should take effect within seconds.
