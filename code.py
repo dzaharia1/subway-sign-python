@@ -7,13 +7,12 @@ from secrets import secrets
 from adafruit_display_text.label import Label
 from adafruit_display_shapes.circle import Circle
 from adafruit_display_shapes.triangle import Triangle
-from adafruit_display_shapes.rect import Rect
 from adafruit_bitmap_font import bitmap_font
 from adafruit_matrixportal.matrix import Matrix
 from adafruit_matrixportal.network import Network
 import supervisor
 
-DATA_SOURCE = secrets["api"] + "/sign" + secrets["sign_id"]
+DATA_SOURCE = secrets["api"] + "/sign/" + secrets["sign_id"]
 DATA_LOCATION = []
 font = terminalio.FONT
 
@@ -32,12 +31,14 @@ def get_data(iteration=0):
     ret = []
     currTime = time.struct_time(time.localtime())
     print(currTime.tm_hour, ":", currTime.tm_min, ":", currTime.tm_sec)
+    print(DATA_SOURCE)
 
     try:
         ret = network.fetch_data(DATA_SOURCE, json_path=DATA_LOCATION)
-    except:
+    except Exception as e:
         if iteration < 10:
             print("~~~~~~~~~~~~~~~~ Fetch error", iteration, "~~~~~~~~~~~~~~~~")
+            print("Exception:", e)
             time.sleep(2)
             ret = get_data(iteration=(iteration + 1))
         else:
