@@ -21,11 +21,11 @@ display = matrix.display
 boot_message = displayio.Group()
 boot_text = Label(font, color=colors.white, text="Starting up", x=4, y=14)
 boot_message.append(boot_text)
-display.show(boot_message)
+display.root_group = boot_message
 network = Network(debug=False)
 boot_text.text = "Connecting to\nssid " + secrets["ssid"] + "..."
 boot_text.y = 8
-display.show(boot_message)
+display.root_group = boot_message
 
 def get_data(iteration=0):
     ret = []
@@ -137,11 +137,11 @@ def draw_arrivals(firstIndex, secondIndex):
     megaGroup = displayio.Group()
     megaGroup.append(arrival1)
     megaGroup.append(arrival2)
-    display.show(megaGroup)
+    display.root_group = megaGroup
     
 data = get_data()
 boot_text.text = "Fetching initial\ndata..."
-display.show(boot_message)
+display.root_group = boot_message
 settings = data[0]
 network.get_local_time(location="America/New_York")
 
