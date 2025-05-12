@@ -1,6 +1,6 @@
 lib
 .DS_Store
-.vscode/
+.vscode
 boot_out.txt
 secrets.py
 settings.toml
