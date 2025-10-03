@@ -16,7 +16,7 @@ DATA_SOURCE = secrets["api"] + "/sign/" + secrets["sign_id"]
 DATA_LOCATION = []
 font = terminalio.FONT
 
-matrix = Matrix(width = 128, height = 32, bit_depth=4)
+matrix = Matrix(width = 128, height = 32, bit_depth=3, color_order="rbg")
 display = matrix.display
 boot_message = displayio.Group()
 boot_text = Label(font, color=colors.white, text="Starting up", x=4, y=14)
@@ -164,7 +164,7 @@ while True:
         time.sleep(5)
     else:
         mask = displayio.Group()
-        display.show(mask)
+        display.root_group = mask
         time.sleep(3)
         
     data = get_data()
