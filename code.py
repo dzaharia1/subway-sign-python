@@ -117,7 +117,7 @@ def draw_arrivals(firstIndex, secondIndex):
         boot_text.text = "No upcoming trains"
         boot_text.color = colors.getColorByLine('B')
         boot_message.y = 8
-        display.show(boot_message)
+        display.root_group = boot_message
         return
 
     arrival1 = create_arrival(
