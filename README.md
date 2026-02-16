@@ -96,12 +96,14 @@ The subway sign code is designed not to include any sensitive information you ne
 
 In a text editor of your choice, create a blank document. Paste the following snippet, and replace the `<parts between alligators>` with your own information.
 
-```json
+```python
 secrets = {
   'ssid': '<your wifi name>',
   'password': '<your wifi password>',
   'api': '<your subway sign api endpoint, starting with https://>',
-  'sign_id': '<your four-letter subway sign id>'
+  'sign_id': '<your four-letter subway sign id>',
+  'aio_username': '<your adafruit io username>',
+  'aio_key': '<your adafruit io key>'
 }
 ```
 
