@@ -1,5 +1,6 @@
 {
     "scripts": {
-        "push": "cp *.py /Volumes/CIRCUITPY"
+        "push": "cp *.py /Volumes/CIRCUITPY",
+        "monitor": "screen /dev/tty.usbmodem31201 115200"
     }
 }
