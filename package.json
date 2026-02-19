@@ -1,6 +1,7 @@
 {
     "scripts": {
         "push": "cp *.py /Volumes/CIRCUITPY",
-        "monitor": "screen /dev/tty.usbmodem31201 115200"
+        "monitor": "tio /dev/tty.usbmodem31201",
+        "start": "npm run push && npm run monitor"
     }
 }
